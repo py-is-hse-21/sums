@@ -1,5 +1,9 @@
 def sums(array: list) -> int:
-    """Находит количество различных сумм вида K1*A1 + K2*A2 + ... + KN*AN
-    :param array: массив целых чисел, содержащий значений A1,A2...
-    """
-    return 2**len(array)
+    sol = [0]
+    for num1 in array:
+        for num2 in sol:
+            res = set(sol)
+            res.update([num1 + num2])
+            sol = list(res)
+    return len(res)
+print(sums([1, 1, 2]))
